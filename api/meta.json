@@ -1,0 +1,19 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Dubbo providers"
+    },
+    "host": "dubbo.io",
+    "basePath": "/providers",
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "consumes": [
+        "application/x-www-form-urlencoded"
+    ],
+    "tags": [
+    ],
+    "paths": {}
+}
