@@ -72,11 +72,15 @@ dubbo comsumer wrapper
 
 ### `lib/descriptor.js`
 
-入参转换核心部件，把 `ctx.request.fields` 转换成 `[hessian.js](https://www.npmjs.com/package/hessian.js)` 入参
+入参转换核心部件，把 HTTP POST (`ctx.request.fields`) 转换成 [hessian.js](https://www.npmjs.com/package/hessian.js) 入参
 
 ### `index.js`
 
-HTTP 入口
+HTTP 入口，路由监听 `/providers/:serviceName/:serviceMethod` 消费 DUBBO RPC 服务
+
+### `static/index.html`
+
+swagger-ui 入口
 
 ## `api/*/meta.json`
 - interface
