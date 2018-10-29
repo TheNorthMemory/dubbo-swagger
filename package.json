@@ -3,9 +3,22 @@
   "version": "1.0.0",
   "description": "the dubbo swagger(OpenAPI) integration, aims to act as the dubbo HTTP gateway and document server",
   "main": "index.js",
-  "directories": {
-    "lib": "lib",
-    "test": "test"
+  "bin": {
+    "oas-flush": "bin/flush.js"
+  },
+  "files": [
+    "index.js",
+    "api/",
+    "bin/",
+    "lib/",
+    "static/"
+  ],
+  "bugs": {
+    "url": "https://github.com/TheNorthMemory/dubbo-swagger/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheNorthMemory/dubbo-swagger.git"
   },
   "scripts": {},
   "keywords": [

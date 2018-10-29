@@ -36,7 +36,7 @@
 
 - `process.env.CLUSTERNUM || 1`
 
-  > nodejs cluster worker进程数目，windows 平台默认为1，*nix 平台默认为
+  > nodejs cluster 进程数目，windows 平台默认为1，*nix 平台默认为 CPU 核数
 
 - `process.env.OAI_EXT_FLAT || 'x-flat'`
 
@@ -60,11 +60,23 @@
 
 - `process.env.NO_WRITE`
 
-  > 如设置此变量，用途仅校验yaml语法是否正确，不写入最终 `static/swagger.*`
+  > 如设置此变量，`bin/flush.js` 仅校验yaml语法是否正确，不写入最终 `static/swagger.*`
 
 ## `bin/flush.js`
 
-是把 api 目录下的 `*/yaml` 组合生成为 `static/swagger.*` 文件
+作用是把目录 `api/*/*.yaml` 文件组合生成为 `static/swagger.*` 文件
+
+## `lib/comsumer.js`
+
+dubbo comsumer wrapper
+
+### `lib/descriptor.js`
+
+入参转换核心部件，把 `ctx.request.fields` 转换成 `[hessian.js](https://www.npmjs.com/package/hessian.js)` 入参
+
+### `index.js`
+
+HTTP 入口
 
 ## `api/*/meta.json`
 - interface
@@ -231,6 +243,10 @@ parameters:
     format: int64
     default: '0'
 ```
+
+## 安装依赖
+
+`npm install`
 
 ## 运行
 
