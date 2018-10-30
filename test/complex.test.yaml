@@ -1,0 +1,75 @@
+summary: complex request
+x-object: com.foo.rpc.complex
+parameters:
+  - name: a
+    in: formData
+    type: integer
+    format: int64
+    required: true
+  - name: b
+    in: formData
+    type: string
+    required: true
+  - name: c
+    in: formData
+    type: array
+    items:
+      type: string
+  - name: d
+    in: formData
+    type: object
+    nullable: true
+    additionalProperties:
+      x-key:
+        type: string
+      type: string
+  - name: e
+    in: formData
+    type: array
+    items:
+      type: integer
+      format: int64
+  - name: f
+    type: number
+    nullable: true
+    format: double
+  - name: g
+    nullable: true
+    type: integer
+  - name: h
+    nullable: true
+    type: number
+    format: float
+  - name: i
+    in: formData
+    type: array
+    items:
+      type: object
+      x-object: io.dubbo.model.one
+      properties:
+        J:
+          type: integer
+          format: int64
+        K:
+          type: string
+        L:
+          type: array
+          items:
+            type: string
+        M:
+          type: object
+          x-object: io.dubbo.model.two
+          properties:
+            N:
+              type: string
+            O:
+              type: integer
+              format: int64
+  - name: p
+    in: formData
+    type: integer
+    format: int64
+    default: '0'
+responses:
+  '200':
+    description: ''

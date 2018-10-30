@@ -1,0 +1,14 @@
+summary: 'a-b=?'
+x-flat: true
+parameters:
+  - name: a
+    in: formData
+    type: integer
+    format: int32
+  - name: b
+    in: formData
+    type: integer
+    format: int32
+responses:
+  '200':
+    description: ''

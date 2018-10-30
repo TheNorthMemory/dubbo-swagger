@@ -20,7 +20,9 @@
     "type": "git",
     "url": "git+https://github.com/TheNorthMemory/dubbo-swagger.git"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "mocha"
+  },
   "keywords": [
     "dubbo",
     "swagger",
@@ -43,5 +45,9 @@
     "koa-static": "^5.0.0",
     "lodash": "^4.17.11",
     "node-zookeeper-client": "^0.2.2"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "should": "^13.2.3"
   }
 }
