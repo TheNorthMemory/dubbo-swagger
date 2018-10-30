@@ -1,8 +1,8 @@
 # DUBBO SWAGGER
 
-得益于开源项目 [OpenAPI-Specification](https://github.com/OAI/OpenAPI-Specification) 及 [node-dubbo](https://www.npmjs.com/package/dubbo)，使用纯JavaScript远程消费 [DUBBO](https://dubbo.io) 服务。
+Thanks the [OpenAPI-Specification](https://github.com/OAI/OpenAPI-Specification) and [node-dubbo](https://www.npmjs.com/package/dubbo) open source projects, here is a simple and easy way to consume the [DUBBO](https://dubbo.io) services.
 
-## 项目结构
+## Structure
 
 ```
 ├── api
@@ -24,47 +24,46 @@
     └── swagger.yaml
 ```
 
-## 环境变量
+## Environment
 
 - `process.env.ZKADDR`
 
-  > zookeeper 注册中心地址，如未设置，http服务仅能当作接口文档，无法发起有效RPC调用
+  > the zookeeper registry, while none setting, this project acts as a HTTP based documentation server, it cannot consume any RPC services.
 
 - `process.env.PORT || 3030`
 
-  > koa http server 监听端口
+  > koa http server listening port, default is `3030`
 
 - `process.env.CLUSTERNUM || 1`
 
-  > nodejs cluster 进程数目，windows 平台默认为1，*nix 平台默认为 CPU 核数
-
+  > the nodejs cluster worker processing number, under the windows platform, that's always 1, other *nixs platforms, that is default as the CPU cores.
 - `process.env.OAI_EXT_FLAT || 'x-flat'`
 
-  > OAS 扩展key，声明入参是扁平入参
+  > extended key of the OAS, used to describe the input parameters in the plat array like
 
 - `process.env.OAI_EXT_OBJECT || 'x-object'`
 
-  > OAS 扩展key，声明入参(有且只有1个入参)是对象入参
+  > extended key of the OAS, used to describe the input parameters is a object properties, the value is the class name
 
 - `process.env.OAI_EXT_MAP_KEY || 'x-key'`
 
-  > OAS 扩展key，声明入参如果是Map对象，map-key的数据类型描述
+  > extended key of the OAS, used to describe one of the parameters is a Map object, the value is describe of the data type and format etc.
 
 - `process.env.OAI_ARRAY_COLLECTION || ','`
 
-  > OAS 默认array类型分隔符
+  > the default collection of the array by the OAS
 
 - `process.env.APPHOST || 'dubbo.io'`
 
-  > `bin/flush.js` 生成文档时的默认主机地址
+  > configure for combine and generate `api/*/*.yaml` `host` property, used by the `bin/flush.js`
 
 - `process.env.NO_WRITE`
 
-  > 如设置此变量，`bin/flush.js` 仅校验yaml语法是否正确，不写入最终 `static/swagger.*`
+  > let the `bin/flush.js` only to verify the yaml schema
 
 ## `bin/flush.js`
 
-作用是把目录 `api/*/*.yaml` 文件组合生成为 `static/swagger.*` 文件
+combine and generate `api/*/*.yaml` to `static/swagger.[json|yaml]`
 
 ## `lib/consumer.js`
 
@@ -72,25 +71,29 @@ dubbo consumer wrapper
 
 ### `lib/descriptor.js`
 
-入参转换核心部件，把 HTTP POST (`ctx.request.fields`) 转换成 [hessian.js](https://www.npmjs.com/package/hessian.js) 入参
+thansform the HTTP POST (`ctx.request.fields`) data to the [hessian.js](https://www.npmjs.com/package/hessian.js) INPUT
 
 ### `index.js`
 
-HTTP 入口，路由监听 `/providers/:serviceName/:serviceMethod` 消费 DUBBO RPC 服务
+koa HTTP entry, the routing is listening on `/providers/:serviceName/:serviceMethod` of the DUBBO service consumer.
 
 ### `static/index.html`
 
-swagger-ui 入口
+the swagger-ui entry
 
 ## `api/*/meta.json`
 - interface
+  > config for the DUBBO service
 - timeout
+  > config for the DUBBO service
 - group
+  > config of the DUBBO service
 - version
+  > config of the DUBBO service
 - tags
-  > 扩展的 swagger UI 标签，Array[String] 结构
+  > used in the swagger UI, `Array[String]` format
 
-## 基础OAS数据结构与 [js-to-java](https://www.npmjs.com/package/js-to-java) 类型映射
+## Mapping of the OAS schema and [js-to-java](https://www.npmjs.com/package/js-to-java) types
 
 ```json
     'boolean'                : java.Boolean,
@@ -118,7 +121,7 @@ swagger-ui 入口
     'array_integer_int64'    : java.array.Long,
 ```
 
-## 示例
+## Examples
 
 api/any_validFolder-com.foo.interface/meta.json
 
@@ -248,15 +251,15 @@ parameters:
     default: '0'
 ```
 
-## 安装依赖
+## Installation
 
 `npm install`
 
-## 运行
+## Running
 
 `ZKADDR=127.0.0.1:2181 DEBUG=dubbo:* CLUSTERNUM=1 NO_DEPRECATION=koa node index.js`
 
-打开浏览器访问 `http://127.0.0.1:3030` 即可看到 swagger ui 提供的基础参数界面；使用 `Try it out` 可以发起正常的表单输入；使用 `Execute` 即可发起dubbo RPC调用。
+open a browser and visit the `http://127.0.0.1:3030` URL, then the swagger UI shown. `Try it out` then `Execute` to comsue the DUBBO services.
 
 ## Licensing
 
