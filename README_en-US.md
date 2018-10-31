@@ -1,5 +1,10 @@
 # DUBBO SWAGGER
 
+[![NPM version](https://badge.fury.io/js/dubbo-swagger.svg)](http://badge.fury.io/js/dubbo-swagger)
+[![npm module downloads per month](http://img.shields.io/npm/dm/dubbo-swagger.svg)](https://www.npmjs.org/package/dubbo-swagger)
+
+[中文版](README.md)
+
 Thanks the [OpenAPI-Specification](https://github.com/OAI/OpenAPI-Specification) and [node-dubbo](https://www.npmjs.com/package/dubbo) open source projects, here is a simple and easy way to consume the [DUBBO](https://dubbo.io) services.
 
 ## Structure

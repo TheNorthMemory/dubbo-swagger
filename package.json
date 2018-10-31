@@ -1,6 +1,6 @@
 {
   "name": "dubbo-swagger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "the dubbo swagger(OpenAPI) integration, aims to act as the dubbo HTTP gateway and document server",
   "main": "index.js",
   "bin": {

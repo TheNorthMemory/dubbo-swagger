@@ -1,5 +1,10 @@
 # DUBBO SWAGGER
 
+[![NPM version](https://badge.fury.io/js/dubbo-swagger.svg)](http://badge.fury.io/js/dubbo-swagger)
+[![npm module downloads per month](http://img.shields.io/npm/dm/dubbo-swagger.svg)](https://www.npmjs.org/package/dubbo-swagger)
+
+[English Version](README_en-US.md)
+
 得益于开源项目 [OpenAPI-Specification](https://github.com/OAI/OpenAPI-Specification) 及 [node-dubbo](https://www.npmjs.com/package/dubbo)，使用纯JavaScript远程消费 [DUBBO](https://dubbo.io) 服务。
 
 ## 项目结构
